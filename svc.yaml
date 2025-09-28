@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: chatbot
+  namespace: chatbot
+  labels:
+    app: chatbot
+    app.kubernetes.io/component: chatbot
+    app.kubernetes.io/instance: chatbot
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  clusterIP: 172.30.15.210
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: chatbot
