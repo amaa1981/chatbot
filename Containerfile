@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY chatbot.py .
 
 # Set environment variables for the chatbot (these will be overridden by OpenShift Deployment)
-ENV VLLM_API_BASE_URL="http://your-vllm-service-name.your-project.svc.cluster.local:8000/v1" \
+ENV VLLM_API_BASE_URL="https://llama-31-8b-instruct.oai-workshop.svc.cluster.local/v1" \
     MODEL_NAME="llama-31-8b-instruct" \
     MAX_OUTPUT_TOKENS="500" \
     TEMPERATURE="0.7" \
