@@ -125,7 +125,7 @@ HTML_TEMPLATE = """
         const spinner = document.getElementById('spinner');
 
         // Initial system message and greeting
-        let chatHistory = [{{ default_system_message | tojson }}];
+        let chatHistory = [{{ default_system_message | safe }}];
         addMessage('assistant', 'Hello! How can I help you today?');
 
         function addMessage(sender, text) {
