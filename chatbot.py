@@ -7,7 +7,7 @@ from rich.box import MINIMAL # Optional
 
 # --- Configuration ---
 # Replace with your actual OpenShift Route URL
-VLLM_API_BASE_URL = os.getenv("VLLM_API_BASE_URL", "https://llama-31-8b-instruct.oai-workshop.svc.cluster.local/v1")
+VLLM_API_BASE_URL = os.getenv("VLLM_API_BASE_URL", "https://llama-31-8b-instruct-oai-workshop.apps.cluster-tmgzh.tmgzh.sandbox305.opentlc.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "llama-31-8b-instruct")
 
 # Generation parameters
