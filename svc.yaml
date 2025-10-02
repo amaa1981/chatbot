@@ -13,6 +13,10 @@ spec:
       protocol: TCP
       port: 8080
       targetPort: 8080
+    - name: http-443
+      protocol: TCP
+      port: 443
+      targetPort: 443
   internalTrafficPolicy: Cluster
   clusterIPs:
     - 172.30.66.115
