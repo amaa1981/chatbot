@@ -5,8 +5,7 @@ FROM registry.access.redhat.com/ubi8/python-39:latest
 WORKDIR /app
 
 # Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r Flask requests gunicorn
 
 # Copy the chatbot script
 COPY chatbot.py . # Ensure this matches your file name
