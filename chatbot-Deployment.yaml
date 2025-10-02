@@ -1,6 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '6'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"chatbot:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"chatbot\")].image"}]'
+  resourceVersion: '507645'
   name: chatbot
   namespace: chatbot
   labels:
@@ -17,8 +21,6 @@ spec:
       creationTimestamp: null
       labels:
         app: chatbot
-      annotations:
-        openshift.io/generated-by: OpenShiftNewApp
     spec:
       containers:
         - resources: {}
@@ -27,26 +29,26 @@ spec:
           command:
             - /opt/app-root/bin/gunicorn
           env:
-            - name: APP_FILE
-              value: chatbot.py
-            - name: MAX_OUTPUT_TOKENS
-              value: '700'
+            - name: VLLM_API_BASE_URL
+              value: 'https://llama-31-8b-instruct-test.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com/v1'
             - name: MODEL_NAME
               value: llama-31-8b-instruct
-            - name: STREAM_RESPONSE
-              value: 'True'
             - name: TEMPERATURE
               value: '0.7'
             - name: TOP_P
               value: '0.9'
-            - name: VLLM_API_BASE_URL
-              value: 'https://llama-31-8b-instruct-oai-workshop.apps.cluster-tmgzh.tmgzh.sandbox305.opentlc.com/v1'
+            - name: MAX_OUTPUT_TOKENS
+              value: '700'
+            - name: STREAM_RESPONSE
+              value: 'True'
+            - name: APP_FILE
+              value: chatbot.py
           ports:
             - containerPort: 8080
               protocol: TCP
           imagePullPolicy: IfNotPresent
           terminationMessagePolicy: File
-          image: amaa1981/chatbot:v4
+          image: 'amaa1981/chatbot:v6'
           args:
             - '--bind'
             - '0.0.0.0:8080'
