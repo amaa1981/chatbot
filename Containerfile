@@ -8,7 +8,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir -r Flask requests gunicorn
 
 # Copy the chatbot script
-COPY chatbot.py . # Ensure this matches your file name
+COPY chatbot.py .
 
 # Set default environment variables (will be overridden by OpenShift Deployment)
 ENV VLLM_API_BASE_URL="https://llama-31-8b-instruct-oai-workshop.apps.cluster-tmgzh.tmgzh.sandbox305.opentlc.com/v1" \
@@ -17,7 +17,7 @@ ENV VLLM_API_BASE_URL="https://llama-31-8b-instruct-oai-workshop.apps.cluster-tm
     TEMPERATURE="0.7" \
     TOP_P="0.9" \
     STREAM_RESPONSE="False" \
-    FLASK_APP="chatbot.py" # Tell Flask where the app is if running with 'flask run' (not used by gunicorn here)
+    FLASK_APP="chatbot.py" 
 
 # Expose the port Gunicorn will listen on
 EXPOSE 8080
