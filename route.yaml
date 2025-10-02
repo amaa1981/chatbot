@@ -1,0 +1,26 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: chatbot
+  namespace: chatbot
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: chatbot-chatbot.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
+  path: /
+  to:
+    kind: Service
+    name: chatbot-service
+    weight: 100
+  port:
+    targetPort: http-8080
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: chatbot-chatbot.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
