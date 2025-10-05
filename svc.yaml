@@ -18,8 +18,6 @@ spec:
       port: 443
       targetPort: 443
   internalTrafficPolicy: Cluster
-  clusterIPs:
-    - 172.30.66.115
   type: ClusterIP
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
