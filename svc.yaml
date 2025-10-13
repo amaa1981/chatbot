@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: chatbot-service
-  namespace: chatbot
   labels:
     app: chatbot
 spec:
