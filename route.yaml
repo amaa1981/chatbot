@@ -2,7 +2,6 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: chatbot
-  namespace: chatbot
   annotations:
     openshift.io/host.generated: 'true'
 spec:
