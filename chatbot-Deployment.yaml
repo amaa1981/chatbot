@@ -6,7 +6,6 @@ metadata:
     image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"chatbot:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"chatbot\")].image"}]'
   resourceVersion: '507645'
   name: chatbot
-  namespace: chatbot
   labels:
     app: chatbot
     app.kubernetes.io/component: chatbot
