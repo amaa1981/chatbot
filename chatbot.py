@@ -84,7 +84,7 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot ({{ model_name }})</title>
+    <title>DemoJam AI App Factory ({{ model_name }})</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #eef2f7; color: #333; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
         .chat-container { width: 100%; max-width: 800px; margin: 20px; background-color: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
@@ -108,7 +108,7 @@ HTML_TEMPLATE = """
 </head>
 <body>
     <div class="chat-container">
-        <h1>AI Chatbot ({{ model_name }})</h1>
+        <h1>DemoJam AI App Factory ({{ model_name }})</h1>
         <div class="chat-box" id="chat-box">
             </div>
         <div class="input-area">
