@@ -1,25 +1,22 @@
-kind: Route
 apiVersion: route.openshift.io/v1
+kind: Route
 metadata:
-  name: chatbot
-  annotations:
-    openshift.io/host.generated: 'true'
+  name: chatbot-route # Your route name
+  labels:
+    app: chatbot
 spec:
-  host: chatbot-chatbot.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
-  path: /
+  # --- Optional: Define a specific hostname if needed ---
+  # host: my-chatbot.apps.mycluster.com
+  # ---------------------------------------------------
   to:
     kind: Service
-    name: chatbot-service
+    name: chatbot-service # Must match your Service name
     weight: 100
   port:
-    targetPort: http-8080
+    targetPort: http-8080 # Must match the port name or number in your Service
+  # --- TLS Configuration for HTTPS ---
+  tls:
+    termination: edge # Router terminates HTTPS, forwards HTTP to pod
+    insecureEdgeTerminationPolicy: Redirect # Automatically redirect HTTP requests to HTTPS
+  # -----------------------------------
   wildcardPolicy: None
-status:
-  ingress:
-    - host: chatbot-chatbot.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
-      routerName: default
-      conditions:
-        - type: Admitted
-          status: 'True'
-      wildcardPolicy: None
-      routerCanonicalHostname: router-default.apps.cluster-txfv8.txfv8.sandbox265.opentlc.com
