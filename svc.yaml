@@ -12,10 +12,6 @@ spec:
       protocol: TCP
       port: 8080
       targetPort: 8080
-    - name: http-443
-      protocol: TCP
-      port: 443
-      targetPort: 443
   internalTrafficPolicy: Cluster
   type: ClusterIP
   ipFamilyPolicy: SingleStack
